@@ -1,9 +1,9 @@
 import pygame
 import asyncio
-import asyncio
 
 # Colors
 background_colour =(255,255,255)#(40,194,199)
+background_colour_dark=(53, 56, 54)
 col = 'black'
 color = (219, 112, 147)
 color_safe = (146, 179, 240)
@@ -24,6 +24,7 @@ fonta = pygame.font.Font('Zector.ttf',40)
 # Variables
 click = 0
 info_click = 0
+dark_mode=0
 
 
 # Drag Variables
@@ -64,7 +65,7 @@ p1_ship_des=0
 p2_ship_des=0
 
 
-# Button Images
+# light Button Images
 play_img = pygame.image.load('Button_Play.jpg').convert_alpha()
 play_hov_img = pygame.image.load('Button_Play_Hov.jpg').convert_alpha()
 
@@ -79,6 +80,23 @@ confirm_hov_img = pygame.image.load('Button_Confirm_Hov.jpg').convert_alpha()
 
 next_img = pygame.image.load('Button_Next.jpg').convert_alpha()
 next_hov_img = pygame.image.load('Button_Next_Hov.jpg').convert_alpha()
+
+light_img = pygame.image.load('light_mode.jpg').convert_alpha()
+light_hov_img = pygame.image.load('light_mode_hov.jpg').convert_alpha()
+
+#dark button images
+dark_play_img = pygame.image.load('Button_Play_dark.jpg').convert_alpha()
+
+dark_exit_img = pygame.image.load('Button_Exit_dark.jpg').convert_alpha()
+
+dark_info_img = pygame.image.load('Button_Info_dark.jpg').convert_alpha()
+
+dark_confirm_img = pygame.image.load('Button_Confirm_dark.jpg').convert_alpha()
+
+dark_next_img = pygame.image.load('Button_Next_dark.jpg').convert_alpha()
+
+dark_img = pygame.image.load('dark_mode.jpg').convert_alpha()
+dark_hov_img = pygame.image.load('dark_mode_hov.jpg').convert_alpha()
 
 waiting_img = pygame.image.load('wait.jpg')
 ship_a = pygame.image.load('shipa.jpg').convert()
@@ -209,6 +227,8 @@ button_exit = Button(520, 500, exit_img, 1)
 button_info = Button(520, 350, info_img, 1)
 confirm_btn = Button(990, 3, confirm_img, 0.5)
 button_next = Button(900, 500, next_img, 1)
+button_dark=Button(1050, 450, dark_img,1)
+button_light=Button(890, 450, light_img,1)
 
 # Ships Initial Position
 objects_p1 = [drag_obj(87, 625, ship_a),
@@ -242,7 +262,7 @@ async def main():
     global text, text_main1, text_main2, text_result1, text_result2, text_result3_p1, text_result3_p2, text_result3_draw
     global text0, text1, textt2, text3, text4, text5, text6, text11, text12, text13, text14, text15, text16
     global a, b, c, d, e, f, g, h, i, j, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10
-    global button_exit, button_info, button_next, button_play, confirm_btn
+    global button_exit, button_info, button_next, button_play, confirm_btn, button_dark, button_light,dark_play_img,dark_exit_img ,dark_info_img ,dark_confirm_img,dark_next_img
     global p1_ship_des, p2_ship_des
     global ship_list
     
@@ -267,6 +287,19 @@ async def main():
                 button_info = Button(520, 350, info_hov_img, 1)
             else:
                 button_info = Button(520, 350, info_img, 1)
+            
+            #LIGHT AND DARK
+            if button_dark.draw()[1]:
+                #print('Hovering on dark')
+                button_dark = Button(1055, 455, dark_hov_img, 1)
+            else:
+                button_dark = Button(1050, 450, dark_img, 1)
+
+            if button_light.draw()[1]:
+                #print('Hovering on dark')
+                button_light = Button(895, 455, light_hov_img, 1)
+            else:
+                button_light= Button(890, 450, light_img, 1)
     
             screen.blit(header,(280,50))
             pygame.display.update()
