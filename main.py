@@ -84,8 +84,6 @@ ship_b = pygame.image.load('shipb.jpg').convert()
 ship_c = pygame.image.load('shipc.jpg').convert()
 ship_d = pygame.image.load('shipd.jpg').convert()
 
-arrow_1 = pygame.image.load('Arrow_1.jpg')
-arrow_2 = pygame.image.load('Arrow_2.jpg')
 
 # Renders
 text = fonta.render('Hold and drag to insert ships!',True,'black')
@@ -627,11 +625,6 @@ while running:
         screen.blit(a8, (78 + 40 + (7 * cube_size) + 552, spacing))
         screen.blit(a9, (78 + 40 + (8 * cube_size) + 552, spacing))
         screen.blit(a10, (72 + 40 + (9 * cube_size) + 552, spacing))
-
-        if shot_number%2 == 0:
-            screen.blit(arrow_2, (568, 0))
-        else:
-            screen.blit(arrow_1, (568, 0))
 
         if cur_chnc_p1 == cur_chnc_p2 == chance:
             click +=1
