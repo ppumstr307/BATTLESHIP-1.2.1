@@ -404,8 +404,29 @@ async def main():
                         if button_exit.draw()[0]:
                             info_click = 0
                             click = 0
-    
+        
+        # Your Code Goes Here
         if click == 1:
+            #
+
+            
+            #
+            if button_next.draw()[1]:
+                button_next = Button(900, 500, next_hov_img, 1)
+            else:
+                button_next = Button(900, 500, next_img, 1)
+    
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: 
+                    running = False
+    
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if button_next.draw()[0]:
+                            click += 1
+
+        # Your Code Ends Here
+        if click == 2:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -570,7 +591,7 @@ async def main():
             pygame.display.update()
             pygame.display.flip()
     
-        if click == 2:
+        if click == 3:
             for z in range(0, 6):
                 len_p1_ship = p1_ships[z][1][0] - p1_ships[z][0][0]
                 box_len_p1_ship = len_p1_ship // cube_size
@@ -732,7 +753,7 @@ async def main():
             pygame.display.update()
             pygame.display.flip()
     
-        if click == 3:
+        if click == 4:
             screen.blit(text_result1,(450,60))
             screen.blit(text_result2,(435,150))
     
