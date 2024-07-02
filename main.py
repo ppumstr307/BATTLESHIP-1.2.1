@@ -24,7 +24,8 @@ fonta = pygame.font.Font('Zector.ttf',40)
 # Variables
 click = 0
 info_click = 0
-dark_mode=0
+set_click = 0
+dark_mode = 0
 
 
 # Drag Variables
@@ -86,6 +87,9 @@ next_img = pygame.image.load('Button_Next.jpg').convert_alpha()
 next_hov_img = pygame.image.load('Button_Next_Hov.jpg').convert_alpha()
 dark_next_img = pygame.image.load('Button_Next_dark.jpg').convert_alpha()
 
+set_img = pygame.image.load('Button_Settings.jpg').convert_alpha()
+dark_set_img = pygame.image.load('Button_Settings_dark.jpg').convert_alpha()
+
 light_img = pygame.image.load('light_mode.jpg').convert_alpha()
 light_hov_img = pygame.image.load('light_mode_hov.jpg').convert_alpha()
 dark_img = pygame.image.load('dark_mode.jpg').convert_alpha()
@@ -96,6 +100,7 @@ eimg = exit_img
 iimg = info_img
 cimg = confirm_img
 nimg = next_img
+simg = set_img
 
 waiting_img = pygame.image.load('wait.jpg')
 ship_a = pygame.image.load('shipa.jpg').convert()
@@ -226,6 +231,7 @@ button_exit = Button(520, 500, exit_img, 1)
 button_info = Button(520, 350, info_img, 1)
 confirm_btn = Button(990, 3, confirm_img, 0.5)
 button_next = Button(900, 500, next_img, 1)
+button_settings = Button(0, 0, set_img, 1)
 button_dark = Button(1050, 450, dark_img,1)
 button_light = Button(890, 450, light_img,1)
 
@@ -249,22 +255,22 @@ running = True
 
 async def main():
     
-    global background_colour, col, color, color_safe, click, info_click
+    global background_colour, col, color, color_safe, click, info_click, set_click
     global rotation_angle, p1_ship_not_placed, p2_ship_not_placed, show_img, cube_size, grid_size, confirm_btn_press_cnt
     global p1_ship_loca, p2_ship_loca, rectangle_coordinates_list, rectangle_coordinates_list1, Store_ship_location
     global chance, cur_chnc_p1, cur_chnc_p2, shot_number
 
     global switch, p1_ships_refined, p2_ships_refined, hit_squares_p1, hit_squares_p2, miss_squares
     global objects_p1, objects_p2, running
-    global play_img, play_hov_img, exit_img, exit_hov_img, info_img, info_hov_img, confirm_img, confirm_hov_img, next_img, next_hov_img
+    global play_img, play_hov_img, exit_img, exit_hov_img, info_img, info_hov_img, confirm_img, confirm_hov_img, next_img, next_hov_img, set_img, dark_set_img, dark_play_img, dark_exit_img, dark_info_img, dark_confirm_img, dark_next_img
     global waiting_img, ship_a, ship_b, ship_c, ship_d
     global text, text_main1, text_main2, text_result1, text_result2, text_result3_p1, text_result3_p2, text_result3_draw
     global text0, text1, textt2, text3, text4, text5, text6, text11, text12, text13, text14, text15, text16
     global a, b, c, d, e, f, g, h, i, j, a1, a2, a3, a4, a5, a6, a7, a8, a9, a10
-    global button_exit, button_info, button_next, button_play, confirm_btn, button_dark, button_light, dark_play_img, dark_exit_img, dark_info_img, dark_confirm_img, dark_next_img
+    global button_exit, button_info, button_next, button_play, confirm_btn, button_dark, button_light, button_settings
     global p1_ship_des, p2_ship_des
     global ship_list
-    global pimg, eimg, iimg, cimg, nimg, background_colour_dark
+    global pimg, eimg, iimg, cimg, nimg, simg, background_colour_dark
      
     while running:
         screen.fill(background_colour)
@@ -287,22 +293,63 @@ async def main():
                 button_info = Button(520, 350, info_hov_img, 1)
             else:
                 button_info = Button(520, 350, info_img, 1)
-            
-            if button_dark.draw()[1]:
-                #print('Hovering on Dark')
-                button_dark = Button(1055, 455, dark_hov_img, 1)
-            else:
-                button_dark = Button(1050, 450, dark_img, 1)
 
-            if button_light.draw()[1]:
-                #print('Hovering on Light')
-                button_light = Button(895, 455, light_hov_img, 1)
+            if button_settings.draw()[1]:
+                #print('Hovering on Settings')
+                button_settings = Button(1100, 550, set_img, 1)
             else:
-                button_light= Button(890, 450, light_img, 1)
+                button_settings = Button(1100, 550, set_img, 1)
     
             screen.blit(header,(280,50))
             pygame.display.update()
             pygame.display.flip()
+
+        if set_click == 1 and click == 'Nil':
+            if button_dark.draw()[1]:
+                #print('Hovering on Dark')
+                button_dark = Button(630, 105, dark_hov_img, 1)
+            else:
+                button_dark = Button(625, 100, dark_img, 1)
+
+            if button_light.draw()[1]:
+                #print('Hovering on Light')
+                button_light = Button(470, 105, light_hov_img, 1)
+            else:
+                button_light= Button(465, 100, light_img, 1)
+
+            if button_exit.draw()[1]:
+                button_exit = Button(900, 500, exit_hov_img, 1)
+            else:
+                button_exit = Button(900, 500, exit_img, 1)
+    
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: 
+                    running = False
+    
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+
+                        if button_exit.draw()[0]:
+                            set_click = 0
+                            click = 0
+
+                        if button_dark.draw()[0]:
+                            background_colour = background_colour_dark
+                            play_img = dark_play_img
+                            exit_img = dark_exit_img
+                            info_img = dark_info_img
+                            confirm_img = dark_confirm_img
+                            next_img = dark_next_img
+                            set_img = dark_set_img
+
+                        if button_light.draw()[0]:
+                            background_colour = (255,255,255)
+                            play_img = pimg
+                            exit_img = eimg
+                            info_img = iimg
+                            confirm_img = cimg
+                            next_img = nimg
+                            set_img = simg
             
         if info_click == 1 and click == 'Nil':
             screen.blit(text0, (550, 50))
@@ -713,22 +760,10 @@ async def main():
                     if button_info.draw()[0]:
                         info_click += 1
                         click = 'Nil'
-                    
-                    if button_dark.draw()[0]:
-                        background_colour = background_colour_dark
-                        play_img = dark_play_img
-                        exit_img = dark_exit_img
-                        info_img = dark_info_img
-                        confirm_img = dark_confirm_img
-                        next_img = dark_next_img
 
-                    if button_light.draw()[0]:
-                        background_colour = (255,255,255)
-                        play_img = pimg
-                        exit_img = eimg
-                        info_img = iimg
-                        confirm_img = cimg
-                        next_img = nimg
+                    if button_settings.draw()[0]:
+                        set_click += 1
+                        click = 'Nil'
         
         pygame.display.update()
         pygame.display.flip()
