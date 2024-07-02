@@ -84,6 +84,11 @@ next_hov_img = pygame.image.load('Button_Next_Hov.jpg').convert_alpha()
 light_img = pygame.image.load('light_mode.jpg').convert_alpha()
 light_hov_img = pygame.image.load('light_mode_hov.jpg').convert_alpha()
 
+pimg=play_img
+eimg=exit_img
+iimg=info_img
+cimg=confirm_img
+nimg=next_img
 #dark button images
 dark_play_img = pygame.image.load('Button_Play_dark.jpg').convert_alpha()
 
@@ -265,7 +270,7 @@ async def main():
     global button_exit, button_info, button_next, button_play, confirm_btn, button_dark, button_light,dark_play_img,dark_exit_img ,dark_info_img ,dark_confirm_img,dark_next_img
     global p1_ship_des, p2_ship_des
     global ship_list
-    
+     
     while running:
         screen.fill(background_colour)
     
@@ -304,7 +309,7 @@ async def main():
             screen.blit(header,(280,50))
             pygame.display.update()
             pygame.display.flip()
-    
+            
         if info_click == 1 and click == 'Nil':
             screen.blit(text0, (550, 50))
             screen.blit(text1, (10, 150))
@@ -714,6 +719,25 @@ async def main():
                     if button_info.draw()[0]:
                         info_click += 1
                         click = 'Nil'
+                    if button_dark.draw()[0]:
+
+                        background_colour=background_colour_dark
+                        confirm_img=dark_confirm_img
+                        play_img=dark_play_img
+                        exit_img=dark_exit_img
+                        info_img=dark_info_img
+                    if button_light.draw()[0]:
+                        background_colour=(255,255,255)
+                        
+                        play_img = pimg
+                        exit_img = eimg
+                        info_img = iimg
+                        confirm_img = cimg
+                        next_img = nimg
+                    
+
+                        
+
         
         pygame.display.update()
         pygame.display.flip()
