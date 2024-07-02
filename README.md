@@ -1,11 +1,13 @@
-# Battleship-v1.2
-# BATTLESHIP Pending Tasks
+# Battleship-v1.2.1
+
+BATTLESHIP Pending Tasks
 - AI Bot (Probs based system) 
 - App Studio??
 - Website Generation
 - Animations
-- Dark mode 
+- Visual Representation of Turn System 
+
 
 Completed :
 - Bug Fixes (One click at a time, Turn system)
-# BATTLESHIP-1.2.1
+- Dark Mode
