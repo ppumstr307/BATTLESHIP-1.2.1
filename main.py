@@ -65,6 +65,34 @@ global p1_ship_des, p2_ship_des
 p1_ship_des=0
 p2_ship_des=0
 
+#characters
+chr1 = pygame.image.load('CHARACTERS/chigga west.jpg').convert_alpha()
+chr2 = pygame.image.load('CHARACTERS/chigga.jpg').convert_alpha()
+chr3 = pygame.image.load('CHARACTERS/cr7.jpg').convert_alpha()
+chr4 = pygame.image.load('CHARACTERS/drake.jpg').convert_alpha()
+chr5 = pygame.image.load('CHARACTERS/eminem.jpg').convert_alpha()
+chr6 = pygame.image.load('CHARACTERS/freakybob.jpg').convert_alpha()
+chr7 = pygame.image.load('CHARACTERS/han.jpg').convert_alpha()
+chr8 = pygame.image.load('CHARACTERS/ishowmeat.jpg').convert_alpha()
+chr9 = pygame.image.load('CHARACTERS/kaicenat.jpg').convert_alpha()
+chr10 = pygame.image.load('CHARACTERS/ksi.jpg').convert_alpha()
+chr11 = pygame.image.load('CHARACTERS/messi.jpg').convert_alpha()
+chr12 = pygame.image.load('CHARACTERS/mrbeast.jpg').convert_alpha()
+
+
+chr1_hov = pygame.image.load('CHARACTERS/chigga west.jpg').convert_alpha()
+chr2_hov = pygame.image.load('CHARACTERS/chigga.jpg').convert_alpha()
+chr3_hov = pygame.image.load('CHARACTERS/cr7.jpg').convert_alpha()
+chr4_hov = pygame.image.load('CHARACTERS/drake.jpg').convert_alpha()
+chr5_hov = pygame.image.load('CHARACTERS/eminem.jpg').convert_alpha()
+chr6_hov = pygame.image.load('CHARACTERS/freakybob.jpg').convert_alpha()
+chr7_hov = pygame.image.load('CHARACTERS/han.jpg').convert_alpha()
+chr8_hov = pygame.image.load('CHARACTERS/ishowmeat.jpg').convert_alpha()
+chr9_hov = pygame.image.load('CHARACTERS/kaicenat.jpg').convert_alpha()
+chr10_hov = pygame.image.load('CHARACTERS/ksi.jpg').convert_alpha()
+chr11_hov = pygame.image.load('CHARACTERS/messi.jpg').convert_alpha()
+chr12_hov = pygame.image.load('CHARACTERS/mrbeast.jpg').convert_alpha()
+
 
 # Button Images
 play_img = pygame.image.load('Button_Play.jpg').convert_alpha()
@@ -235,6 +263,21 @@ button_settings = Button(0, 0, set_img, 1)
 button_dark = Button(1050, 450, dark_img,1)
 button_light = Button(890, 450, light_img,1)
 
+button_chr1=Button(0,0,chr1,1)
+button_chr2=Button(0,10,chr2,1)
+button_chr3=Button(0,20,chr3,1)
+button_chr4=Button(0,30,chr4,1)
+button_chr5=Button(0,40,chr5,1)
+button_chr6=Button(0,50,chr6,1)
+
+button_chr7=Button(100,0,chr7,1)
+button_chr8=Button(100,10,chr8,1)
+button_chr9=Button(100,20,chr9,1)
+button_chr10=Button(100,30,chr10,1)
+button_chr11=Button(100,40,chr11,1)
+button_chr12=Button(100,50,chr12,1)
+
+
 # Ships Initial Position
 objects_p1 = [drag_obj(87, 625, ship_a),
               drag_obj(952-15, 625, ship_a),
@@ -271,6 +314,9 @@ async def main():
     global p1_ship_des, p2_ship_des
     global ship_list
     global pimg, eimg, iimg, cimg, nimg, simg, background_colour_dark
+    global chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12
+    global chr1_hov,chr2_hov,chr3_hov,chr4_hov,chr5_hov,chr6_hov,chr7_hov,chr8_hov,chr9_hov,chr10_hov,chr11_hov,chr12_hov
+    global button_chr1,button_chr2,button_chr3,button_chr4,button_chr5,button_chr6,button_chr7,button_chr8,button_chr9,button_chr10,button_chr11,button_chr12
      
     while running:
         screen.fill(background_colour)
@@ -407,10 +453,69 @@ async def main():
         
         # Your Code Goes Here
         if click == 1:
-            #
-
+            if button_chr1.draw()[1]:
+                button_chr1=Button(10,10,chr1_hov,1)
+            else:
+                button_chr1=Button(10,10,chr1,1)
             
-            #
+            if button_chr2.draw()[1]:
+                button_chr2=Button(10,140,chr2_hov,1)
+            else:
+                button_chr2=Button(10,140,chr2,1)
+            
+            if button_chr3.draw()[1]:
+                button_chr3=Button(10,270,chr3_hov,1)
+            else:
+                button_chr3=Button(10,270,chr3,1)
+            
+            # if button_chr4.draw()[1]:
+            #     button_chr4=Button(0,30,chr1_hov,1)
+            # else:
+            #     button_chr4=Button(0,40,chr1,1)
+            
+            # if button_chr5.draw()[1]:
+            #     button_chr5=Button(0,50,chr1_hov,1)
+            # else:
+            #     button_chr5=Button(0,50,chr1,1)
+            
+            # if button_chr6.draw()[1]:
+            #     button_chr6=Button(0,60,chr1_hov,1)
+            # else:
+            #     button_chr6=Button(0,60,chr1,1)
+            
+            # if button_chr7.draw()[1]:
+            #     button_chr7=Button(100,0,chr1_hov,1)
+            # else:
+            #     button_chr7=Button(100,0,chr1,1)
+            
+            # if button_chr8.draw()[1]:
+            #     button_chr8=Button(100,10,chr1_hov,1)
+            # else:
+            #     button_chr8=Button(100,10,chr1,1)
+            
+            # if button_chr9.draw()[1]:
+            #     button_chr9=Button(100,20,chr1_hov,1)
+            # else:
+            #     button_chr9=Button(100,20,chr1,1)
+            
+            # if button_chr10.draw()[1]:
+            #     button_chr10=Button(100,30,chr1_hov,1)
+            # else:
+            #     button_chr10=Button(100,30,chr1,1)
+            
+            # if button_chr11.draw()[1]:
+            #     button_chr11=Button(100,40,chr1_hov,1)
+            # else:
+            #     button_chr11=Button(100,40,chr1,1)
+            
+            # if button_chr12.draw()[1]:
+            #     button_chr12=Button(100,50,chr1_hov,1)
+            # else:
+            #     button_chr12=Button(100,50,chr1,1)
+            
+
+
+
             if button_next.draw()[1]:
                 button_next = Button(900, 500, next_hov_img, 1)
             else:
