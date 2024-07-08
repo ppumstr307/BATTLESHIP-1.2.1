@@ -76,7 +76,7 @@ chr7 = pygame.image.load('CHARACTERS/han.png').convert_alpha()
 chr8 = pygame.image.load('CHARACTERS/ishowmeat.png').convert_alpha()
 chr9 = pygame.image.load('CHARACTERS/kaicenat.png').convert_alpha()
 chr10 = pygame.image.load('CHARACTERS/ksi.png').convert_alpha()
-chr11 = pygame.image.load('CHARACTERS/osama.png').convert_alpha()
+chr11 = pygame.image.load('CHARACTERS/osama.png').convert_alpha() #Double (Place Snake Eyes from G.I.Joe Here)
 chr12 = pygame.image.load('CHARACTERS/mrbeast.png').convert_alpha()
 
 
@@ -90,7 +90,7 @@ chr7_hov = pygame.image.load('CHARACTERS/han.png').convert_alpha()
 chr8_hov = pygame.image.load('CHARACTERS/ishowmeat.png').convert_alpha()
 chr9_hov = pygame.image.load('CHARACTERS/kaicenat.png').convert_alpha()
 chr10_hov = pygame.image.load('CHARACTERS/ksi.png').convert_alpha()
-chr11_hov = pygame.image.load('CHARACTERS/osama.png').convert_alpha()
+chr11_hov = pygame.image.load('CHARACTERS/osama.png').convert_alpha() #Double (Place Snake Eyes from G.I.Joe Here)
 chr12_hov = pygame.image.load('CHARACTERS/mrbeast.png').convert_alpha()
 
 
@@ -263,19 +263,18 @@ button_settings = Button(0, 0, set_img, 1)
 button_dark = Button(1050, 450, dark_img,1)
 button_light = Button(890, 450, light_img,1)
 
-button_chr1=Button(0,0,chr1,1)
-button_chr2=Button(0,10,chr2,1)
-button_chr3=Button(0,20,chr3,1)
-button_chr4=Button(0,30,chr4,1)
-button_chr5=Button(0,40,chr5,1)
-button_chr6=Button(0,50,chr6,1)
-
-button_chr7=Button(100,0,chr7,1)
-button_chr8=Button(100,10,chr8,1)
-button_chr9=Button(100,20,chr9,1)
-button_chr10=Button(100,30,chr10,1)
-button_chr11=Button(100,40,chr11,1)
-button_chr12=Button(100,50,chr12,1)
+button_chr1 = Button(0,0,chr1,1)
+button_chr2 = Button(0,10,chr2,1)
+button_chr3 = Button(0,20,chr3,1)
+button_chr4 = Button(0,30,chr4,1)
+button_chr5 = Button(0,40,chr5,1)
+button_chr6 = Button(0,50,chr6,1)
+button_chr7 = Button(100,0,chr7,1)
+button_chr8 = Button(100,10,chr8,1)
+button_chr9 = Button(100,20,chr9,1)
+button_chr10 = Button(100,30,chr10,1)
+button_chr11 = Button(100,40,chr11,1)
+button_chr12 = Button(100,50,chr12,1)
 
 
 # Ships Initial Position
@@ -314,9 +313,9 @@ async def main():
     global p1_ship_des, p2_ship_des
     global ship_list
     global pimg, eimg, iimg, cimg, nimg, simg, background_colour_dark
-    global chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12
+    global chr1, chr2, chr3, chr4, chr5, chr6, chr7, chr8, chr9, chr10, chr11, chr12
     global chr1_hov,chr2_hov,chr3_hov,chr4_hov,chr5_hov,chr6_hov,chr7_hov,chr8_hov,chr9_hov,chr10_hov,chr11_hov,chr12_hov
-    global button_chr1,button_chr2,button_chr3,button_chr4,button_chr5,button_chr6,button_chr7,button_chr8,button_chr9,button_chr10,button_chr11,button_chr12
+    global button_chr1, button_chr2, button_chr3, button_chr4, button_chr5, button_chr6, button_chr7, button_chr8, button_chr9, button_chr10, button_chr11, button_chr12
      
     while running:
         screen.fill(background_colour)
@@ -450,9 +449,25 @@ async def main():
                         if button_exit.draw()[0]:
                             info_click = 0
                             click = 0
-        
-        # Your Code Goes Here
-        if click == 1:
+                            
+        if click == 1: # Saved Games
+            screen.blit(text_saved, (500, 50))
+
+            if button_next.draw()[1]:
+                button_next = Button(900, 500, next_hov_img, 1)
+            else:
+                button_next = Button(900, 500, next_img, 1)
+    
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT: 
+                    running = False
+    
+                if event.type == pygame.MOUSEBUTTONDOWN:
+                    if event.button == 1:
+                        if button_next.draw()[0]:
+                            click += 1
+                            
+        if click == 2: # Character Profiles
             if button_chr1.draw()[1]:
                 button_chr1=Button(10,10,chr1_hov,1)
             else:
@@ -502,19 +517,18 @@ async def main():
                 button_chr2=Button(1120,530,chr2_hov,1)
             else:
                 button_chr2=Button(1120,530,chr2,1)
+                
+            '''
+            if button_chr11.draw()[1]:
+                button_chr11=Button(1120,40,chr11_hov,1)
+            else:
+                button_chr11=Button(1120,40,chr11,1)
             
-            # if button_chr11.draw()[1]:
-            #     button_chr11=Button(1120,40,chr11_hov,1)
-            # else:
-            #     button_chr11=Button(1120,40,chr11,1)
-            
-            # if button_chr12.draw()[1]:
-            #     button_chr12=Button(1120,50,chr1_hov,1)
-            # else:
-            #     button_chr12=Button(1120,50,chr1,1)
-            
-
-
+            if button_chr12.draw()[1]:
+                button_chr12=Button(1120,50,chr1_hov,1)
+            else:
+                button_chr12=Button(1120,50,chr1,1)
+            '''
 
             if button_next.draw()[1]:
                 button_next = Button(900, 500, next_hov_img, 1)
@@ -530,8 +544,7 @@ async def main():
                         if button_next.draw()[0]:
                             click += 1
 
-        # Your Code Ends Here
-        if click == 2:
+        if click == 3: # Batt Drag
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     running = False
@@ -696,7 +709,7 @@ async def main():
             pygame.display.update()
             pygame.display.flip()
     
-        if click == 3:
+        if click == 4: # Batt Main
             for z in range(0, 6):
                 len_p1_ship = p1_ships[z][1][0] - p1_ships[z][0][0]
                 box_len_p1_ship = len_p1_ship // cube_size
@@ -858,7 +871,7 @@ async def main():
             pygame.display.update()
             pygame.display.flip()
     
-        if click == 4:
+        if click == 5: # Results
             screen.blit(text_result1,(450,60))
             screen.blit(text_result2,(435,150))
     
