@@ -2,7 +2,6 @@
 
 Pending Tasks (Priority-wise Sorted):
 - Character Profiles
-- New window for Saved Games
 - New Battle Window (To handle the New Character System)
 - Visual Representation of Turn System
 - Character Selection System (Cost Based Selection)
