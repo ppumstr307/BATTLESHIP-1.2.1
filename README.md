@@ -1,5 +1,10 @@
 # Battleship - v1.2.1
 
+steps to run:-
+1.install pygame
+2.open main.py
+3.run as usual
+
 Pending Tasks (Priority-wise Sorted):
 - Character Profiles
 - New Battle Window (To handle the New Character System)
